@@ -32,6 +32,9 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+# The template carries no secrets and is the only record of what the contact
+# form needs, so it is the one env file that ships.
+!.env.example
 
 # vercel
 .vercel
