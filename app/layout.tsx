@@ -20,7 +20,7 @@ const plexMono = IBM_Plex_Mono({
   weight: ["400", "500", "600"],
 });
 
-const title = `${profile.name}, ${profile.role}`;
+const title = `Hassan Ali Portfolio`;
 const description =
   "I build full-stack products and the AI inside them. React, Vue, Next.js and Node on the surface, Postgres and queued jobs behind it, retrieval and agents where they earn their place.";
 
@@ -28,6 +28,10 @@ export const metadata: Metadata = {
   metadataBase: new URL(profile.socials.website),
   title: { default: title, template: `%s · ${profile.name}` },
   description,
+  icons: {
+    icon: "/hassan-ali.jpg",
+    apple: "/hassan-ali.jpg",
+  },
   keywords: [
     "AI Engineer",
     "Full-Stack Engineer",
@@ -48,8 +52,16 @@ export const metadata: Metadata = {
     description,
     url: profile.socials.website,
     siteName: profile.name,
+    images: [
+      {
+        url: "/hassan-ali.jpg",
+        width: 800,
+        height: 1000,
+        alt: `${profile.name}, ${profile.role}`,
+      },
+    ],
   },
-  twitter: { card: "summary_large_image", title, description },
+  twitter: { card: "summary_large_image", title, description, images: ["/hassan-ali.jpg"] },
   robots: { index: true, follow: true },
   alternates: { canonical: "/" },
 };
