@@ -1,8 +1,6 @@
 import Image from "next/image";
 import { Reveal } from "@/components/ui/reveal";
-import { about, profile, experience } from "@/lib/data";
-
-const current = experience.find((role) => role.current) ?? experience[0];
+import { about, profile } from "@/lib/data";
 
 export function About() {
   return (
@@ -16,14 +14,14 @@ export function About() {
         {/* ---------------------------------------------------------------- */}
         <Reveal className="lg:col-span-5 lg:h-full">
           <figure className="relative flex h-full flex-col overflow-hidden rounded-sq border border-line bg-panel">
-            <div className="relative min-h-[420px] flex-1">
+            <div className="relative min-h-[420px] flex-1 bg-raise">
               {about.photo ? (
                 <Image
                   src={about.photo}
                   alt={`${profile.name}, ${profile.role}`}
                   fill
                   sizes="(min-width: 1024px) 40vw, 100vw"
-                  className="object-cover"
+                  className="object-contain drop-shadow-lg"
                   priority
                 />
               ) : (
@@ -77,31 +75,6 @@ export function About() {
                 </p>
               ))}
             </div>
-          </Reveal>
-
-          {/* A short readout so the column ends on data rather than trailing
-              prose. */}
-          <Reveal i={3}>
-            <dl className="mt-9 grid grid-cols-2 gap-px overflow-hidden rounded-sq border border-line bg-line sm:grid-cols-3">
-              <div className="bg-bg px-5 py-4">
-                <dt className="label">Role</dt>
-                <dd className="mt-2 text-[13px] leading-snug text-fg">
-                  {current.role}
-                </dd>
-              </div>
-              <div className="bg-bg px-5 py-4">
-                <dt className="label">Focus</dt>
-                <dd className="mt-2 text-[13px] leading-snug text-fg">
-                  AI and full-stack
-                </dd>
-              </div>
-              <div className="bg-bg px-5 py-4">
-                <dt className="label">Based</dt>
-                <dd className="num mt-2 text-[13px] leading-snug text-fg">
-                  {profile.location}
-                </dd>
-              </div>
-            </dl>
           </Reveal>
         </div>
       </div>

@@ -83,7 +83,7 @@ export function Hero() {
           {/*  Identity plate                                                  */}
           {/* ---------------------------------------------------------------- */}
           <Reveal i={2} className="lg:col-span-5 lg:w-full lg:max-w-[400px] lg:justify-self-end">
-            <div className="panel overflow-hidden">
+            <div className="panel overflow-hidden !border-accent-line" style={{ borderWidth: "1.5px" }}>
               <div className="flex items-center gap-3 border-b border-line bg-raise px-5 py-4">
                 <span className="num grid size-9 shrink-0 place-items-center rounded-sq border border-line-2 bg-bg text-[12px] font-medium text-fg">
                   {profile.initials}

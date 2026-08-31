@@ -1,4 +1,4 @@
-import { ArrowUpRight, GithubLogo, LinkedinLogo, ReadCvLogo } from "@phosphor-icons/react/dist/ssr";
+import { ArrowUpRight, GithubLogo, LinkedinLogo, ReadCvLogo, EnvelopeSimple, Phone } from "@phosphor-icons/react/dist/ssr";
 import { Reveal } from "@/components/ui/reveal";
 import { ContactForm } from "@/components/ui/contact-form";
 import { contact, profile } from "@/lib/data";
@@ -9,18 +9,45 @@ const channels = [
     href: profile.socials.linkedin,
     Icon: LinkedinLogo,
     external: true,
+    iconBg: "bg-[#0A66C2]",
+    iconColor: "text-white",
+    showArrow: true,
   },
   {
     label: "GitHub",
     href: profile.socials.github,
     Icon: GithubLogo,
     external: true,
+    iconBg: "bg-[#24292e]",
+    iconColor: "text-[#e6edf3]",
+    showArrow: true,
+  },
+  {
+    label: "hassanalimalikk@gmail.com",
+    href: "mailto:hassanalimalikk@gmail.com",
+    Icon: EnvelopeSimple,
+    external: false,
+    iconBg: "bg-[#EA4335]",
+    iconColor: "text-white",
+    showArrow: false,
+  },
+  {
+    label: "0341-8340139",
+    href: "tel:+923418340139",
+    Icon: Phone,
+    external: false,
+    iconBg: "bg-[#25D366]",
+    iconColor: "text-white",
+    showArrow: false,
   },
   {
     label: "Resume, PDF",
     href: profile.resumeUrl,
     Icon: ReadCvLogo,
     external: false,
+    iconBg: "bg-[#F40F02]",
+    iconColor: "text-white",
+    showArrow: true,
   },
 ];
 
@@ -49,22 +76,6 @@ export function Contact() {
           </p>
         </Reveal>
 
-        <Reveal i={2}>
-          <a
-            href={`mailto:${profile.email}`}
-            className="group mt-8 inline-flex items-center gap-3 border-b border-line-2 pb-2 transition-colors hover:border-accent"
-          >
-            <span className="num text-[clamp(1rem,2.6vw,1.5rem)] text-fg transition-colors group-hover:text-accent">
-              {profile.email}
-            </span>
-            <ArrowUpRight
-              size={20}
-              weight="bold"
-              className="text-faint transition-all duration-200 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-accent"
-            />
-          </a>
-        </Reveal>
-
         <div className="mt-14 grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-14">
           <Reveal i={2} className="lg:col-span-7">
             <ContactForm />
@@ -77,7 +88,7 @@ export function Contact() {
               </div>
 
               <ul className="divide-y divide-line">
-                {channels.map(({ label, href, Icon, external }) => (
+                {channels.map(({ label, href, Icon, external, iconBg, iconColor, showArrow }) => (
                   <li key={label}>
                     <a
                       href={href}
@@ -85,14 +96,18 @@ export function Contact() {
                       className="group flex items-center justify-between gap-4 px-5 py-4 transition-colors hover:bg-raise"
                     >
                       <span className="inline-flex items-center gap-3 text-[13px] text-fg">
-                        <Icon size={17} className="text-muted transition-colors group-hover:text-fg-2" />
+                        <span className={`grid size-5 shrink-0 place-items-center rounded-[3px] ${iconBg}`}>
+                          <Icon size={12} className={iconColor} />
+                        </span>
                         {label}
                       </span>
-                      <ArrowUpRight
-                        size={14}
-                        weight="bold"
-                        className="text-faint transition-colors group-hover:text-accent"
-                      />
+                      {showArrow && (
+                        <ArrowUpRight
+                          size={14}
+                          weight="bold"
+                          className="text-faint transition-colors group-hover:text-accent"
+                        />
+                      )}
                     </a>
                   </li>
                 ))}

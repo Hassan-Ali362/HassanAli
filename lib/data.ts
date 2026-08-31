@@ -17,7 +17,7 @@ export const profile = {
   /* Hero subtext: 20 words. Hard cap is 20. Does not restate the headline and
      does not list the stack, which the Stack section already does. */
   tagline:
-    "I build web products end to end, and I care most about the parts that only break under real use.",
+    "I build software end to end, from web and mobile applications to AI-powered systems and automated workflows, and take them from idea to production.",
   /* The one claim on this site about your intent rather than your history, so
      it is the one you should check before shipping. Set it to null and the
      hero drops the status chip entirely rather than leaving a stale promise up. */
@@ -27,14 +27,14 @@ export const profile = {
    * rather than named work, so the plate stays true whatever is in the Work
    * section, and so nothing here has to be rewritten when a project changes.
    */
-  focus: "Full-stack, AI and DevOps",
+  focus: "Full stack Web and App, AI and DevOps",
   location: "Islamabad, Pakistan",
   email: "hassanalimalikk@gmail.com",
   resumeUrl: "/hassan-ali-resume.pdf",
   socials: {
     linkedin: "https://www.linkedin.com/in/hassanali-dev123/",
     // TODO: your GitHub profile URL.
-    github: "https://github.com/",
+    github: "https://github.com/Hassan-Ali362",
     website: "https://hassanali.dev",
   },
 } as const;
@@ -56,15 +56,16 @@ export const about = {
    * While this is null the section renders an initials plate instead, so the
    * layout is complete either way.
    */
-  photo: null as string | null,
+  photo: "/hassan-ali.jpg" as string | null,
 
   /* TODO: rewrite these two paragraphs in your own voice. They are accurate
      to what you have told me, but they are my words, not yours, and this is
      the one section where that shows. */
-  lead: "I started in full-stack product work and moved toward the AI side of it.",
+  lead: "I'm a software developer who enjoys turning ideas into real, usable products.",
   body: [
-    "Most of what I build is ordinary web software with something harder underneath: a job that runs for an hour and has to survive a restart, a queue that cannot lose work, a model call that needs a fallback when it returns nothing useful.",
-    "I care about the parts that only appear under real use. A migration tool is easy to demo on one file and hard to trust on a thousand, and the difference is entirely in the reporting, the retries, and knowing which cases a rule should not decide on its own.",
+    "I work across the stack, building web and mobile applications, backend systems, APIs, and the infrastructure needed to take them from development to production.",
+    "I also work with AI when it adds real value—building AI agents, RAG systems, intelligent workflows, and automation that solve practical problems rather than adding AI for the sake of it.",
+    "I enjoy working across different parts of a product, from designing the user experience and writing the backend to integrating AI, automating processes, and deploying reliable systems. I'm always interested in learning new technologies and using the right tools to solve the problem at hand.",
   ],
 } as const;
 
@@ -129,104 +130,116 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    slug: "migration-assistant",
-    layout: "app",
-    name: "Migration Assistant",
-    category: "Codebase migration platform",
+    slug: "delivora",
+    layout: "map",
+    name: "Delivora",
+    category: "Food delivery platform",
+    image: "/delivora.png",
     summary:
-      "Migrates a codebase from one framework to another: deterministic transformation where that is enough, AI agents where it is not.",
+      "A full-stack food delivery platform with real-time order tracking, live map integration, restaurant management, and a seamless checkout experience.",
     detail:
-      "The hard part of a migration is not the syntax rewrite. It is everything around it: a run that takes hours, has to be resumable, and has to report exactly what it changed and why. The frontend is Vue with Vuetify and Vue Router. The API is Node and Express. Transformation jobs go through BullMQ on Redis so a run survives a restart instead of starting over, and Postgres holds run state and the per-file diff. Deterministic transformation tooling handles the mechanical rewrites, and AI agents take the cases where a static rule cannot decide on its own. Packaged and deployed with Docker.",
-    tech: [
-      "vuedotjs",
-      "vuetify",
-      "nodedotjs",
-      "express",
-      "bullmq",
-      "redis",
-      "postgresql",
-      "agents",
-      "docker",
-    ],
-    coverTech: "vuedotjs",
-    links: { demo: "#", github: "#" },
-  },
-  {
-    slug: "vidmind",
-    layout: "media",
-    name: "VidMind",
-    category: "Video question answering",
-    summary:
-      "Paste a YouTube URL and ask questions about it. The transcript is chunked and embedded, so answers come from what was actually said.",
-    tech: ["react", "langchain", "nodedotjs", "rag"],
-    coverTech: "langchain",
-    links: { demo: "#", github: "#" },
+      "Delivora connects customers, restaurants, and drivers on one platform with real-time order tracking on a live map. Customers browse menus, place orders, and follow delivery progress live. Restaurants manage menus and incoming orders through a dedicated dashboard, while drivers receive assignments and update delivery status in real time. Built with Next.js, Node/Express, MongoDB, and Google Maps API.",
+    tech: ["nextdotjs", "nodedotjs", "express", "mongodb", "googlemaps", "redux", "tailwindcss", "restapi"],
+    coverTech: "googlemaps",
+    links: { demo: "/", github: "https://github.com/Hassan-Ali362/Delivora" },
   },
   {
     slug: "vendore",
     layout: "grid",
     name: "Vendore",
-    category: "Multi-vendor marketplace",
+    category: "Multi-vendor e-commerce platform",
+    image: "/vendore.png",
     summary:
-      "An ecommerce platform where every seller runs their own catalog, orders, and storefront rather than sharing one admin.",
-    tech: ["react", "nodedotjs", "express", "mongodb", "docker"],
-    coverTech: "mongodb",
-    links: { demo: "#", github: "#" },
+      "A full-featured multi-vendor marketplace where every seller manages their own storefront, catalog, and orders independently.",
+    detail:
+      "Vendore gives each seller a fully isolated dashboard to manage their catalog, pricing, inventory, and orders independently, while customers browse across all vendors and check out through a single unified flow. The platform handles authentication, role-based access control, and the complete order lifecycle from placement to fulfillment. Built on the MERN stack with Redux for state management, Dockerized for deployment.",
+    tech: ["react", "nodedotjs", "express", "mongodb", "redux", "tailwindcss", "restapi", "docker"],
+    coverTech: "react",
+    links: { demo: "/", github: "https://github.com/Hassan-Ali362/Vendora" },
   },
   {
-    slug: "delivora",
-    layout: "map",
-    name: "Delivora",
-    category: "Food delivery platform",
+    slug: "zavienta",
+    layout: "grid",
+    name: "Zavienta",
+    category: "Fashion e-commerce storefront",
+    image: "/zavienta.png",
     summary:
-      "Ordering and delivery with live map tracking, built on Next.js with a Node service behind it.",
-    tech: ["nextdotjs", "nodedotjs", "express", "googlemaps"],
-    coverTech: "googlemaps",
-    links: { demo: "#", github: "#" },
-  },
-
-  /* ========================================================================= */
-  /*  INVENTED. The three entries below were written to fill the page and are  */
-  /*  not work you have done. The four above are yours.                        */
-  /*                                                                          */
-  /*  Each one is deliberately scoped to the stack you already use and to      */
-  /*  something you could actually build in a few weekends, so the fastest     */
-  /*  way to make this page honest is to build one and keep the entry.         */
-  /*  Otherwise delete them. Be ready to answer follow-up questions on         */
-  /*  anything left here, because an interviewer will ask.                     */
-  /* ========================================================================= */
-  {
-    slug: "loadout",
-    layout: "status",
-    name: "Loadout",
-    category: "Self-hosted deploy pipeline",
-    summary:
-      "Push to a branch and it builds the image, runs migrations, swaps the container, and streams the logs back while it happens.",
-    tech: ["vuedotjs", "nodedotjs", "express", "bullmq", "redis", "docker"],
-    coverTech: "docker",
-    links: { demo: "#", github: "#" },
+      "A modern fashion e-commerce platform with a curated storefront, product discovery, cart management, and a smooth checkout experience.",
+    detail:
+      "Zavienta is a fashion retail platform with category browsing, size and color filtering, a persistent cart and wishlist, and a streamlined checkout flow covering address, payment, and confirmation. An admin panel handles product management, inventory tracking, and order fulfillment. Built with React and Tailwind on the frontend, Node/Express on the backend, and MongoDB for product and order storage.",
+    tech: ["react", "nodedotjs", "express", "mongodb", "redux", "tailwindcss", "restapi"],
+    coverTech: "react",
+    links: { demo: "/", github: "https://github.com/Hassan-Ali362/ZAVO" },
   },
   {
-    slug: "docket",
+    slug: "carvia",
+    layout: "grid",
+    name: "Carvia",
+    category: "Automotive services platform",
+    image: "/carvia.png",
+    summary:
+      "A car services platform where users browse available services, book appointments, track service status, and manage their vehicle records.",
+    detail:
+      "Carvia lets users register vehicles, browse service packages, and book appointments at available slots, then track job progress in real time as service providers update statuses. Providers manage their full booking schedule and communicate with customers through the platform. An admin dashboard handles service catalog management and reporting. Built with React, Tailwind, Node/Express, and MongoDB.",
+    tech: ["react", "nodedotjs", "express", "mongodb", "tailwindcss", "redux", "restapi"],
+    coverTech: "react",
+    links: { demo: "/", github: "https://github.com/Hassan-Ali362/Carvia" },
+  },
+  {
+    slug: "hbs-hospital",
     layout: "app",
-    name: "Docket",
-    category: "Document extraction",
+    name: "HBS Hospital",
+    category: "Hospital website and patient portal",
+    image: "/hbs.png",
     summary:
-      "Point it at a folder of contracts and get structured fields out, plus a cited answer for anything you ask about them.",
-    tech: ["nextdotjs", "langchain", "postgresql", "rag"],
-    coverTech: "postgresql",
-    links: { demo: "#", github: "#" },
+      "A professional hospital website with department listings, doctor profiles, appointment booking, and a patient information portal.",
+    detail:
+      "The HBS Hospital platform is both a public hospital website and a patient portal. Visitors browse departments, read doctor profiles with specializations and availability, and book appointments directly through the site. Registered patients can log in to view their appointment history and upcoming bookings. Admin manages doctor schedules, slots, and department content. Built with Next.js, Node/Express, and MongoDB.",
+    tech: ["nextdotjs", "nodedotjs", "express", "mongodb", "tailwindcss", "restapi"],
+    coverTech: "nextdotjs",
+    links: { demo: "/", github: "https://github.com/Hassan-Ali362/Medsuite" },
   },
   {
-    slug: "kiln",
-    layout: "status",
-    name: "Kiln",
-    category: "Uptime monitoring",
+    slug: "vidmind",
+    layout: "media",
+    name: "VidMind",
+    category: "AI video question answering",
+    image: "/vidmind.png",
     summary:
-      "Scheduled probes against your endpoints, an incident timeline when one fails, and a public status page you can hand to users.",
-    tech: ["react", "nodedotjs", "express", "postgresql", "redis"],
-    coverTech: "redis",
-    links: { demo: "#", github: "#" },
+      "Paste any YouTube URL and ask questions about the video. Answers are grounded in the actual transcript using RAG, not hallucinated summaries.",
+    detail:
+      "VidMind makes long-form video content instantly queryable. Submit a YouTube URL and the system fetches the transcript, chunks it into overlapping segments, embeds each chunk, and stores them in a vector index. When a question comes in, the most relevant segments are retrieved and passed to an LLM with a strict grounding prompt — so every answer cites what was actually said, not a hallucinated summary. Built with React, Node.js, and LangChain orchestrating the full RAG pipeline.",
+    tech: ["react", "nodedotjs", "langchain", "rag", "openai", "postgresql", "tailwindcss"],
+    coverTech: "langchain",
+    links: { demo: "/", github: "https://github.com/Hassan-Ali362/VidPilot" },
+  },
+  {
+    slug: "migratesense",
+    layout: "app",
+    name: "MigrateSense",
+    category: "AI-powered code migration platform",
+    image: "/Migratesense.png",
+    summary:
+      "An intelligent platform that automates codebase migrations across framework versions using static analysis, AST transformation, and AI agents.",
+    detail:
+      "MigrateSense automates framework migrations using AST analysis for deterministic rewrites and multi-agent AI workflows for cases a static rule cannot resolve. Every run is resumable, produces a per-file diff report, and includes human-in-the-loop checkpoints so engineers review AI decisions before they land. Built with Vue and Vuetify, Node/Express, BullMQ on Redis for job queuing, Postgres for run state, and Docker for deployment.",
+    tech: ["vuedotjs", "vuetify", "nodedotjs", "express", "bullmq", "redis", "postgresql", "langchain", "agents", "ast", "docker"],
+    coverTech: "vuedotjs",
+    links: { demo: "/", github: "https://github.com/Hassan-Ali362/MigrateSense" },
+  },
+  {
+    slug: "truthlens",
+    layout: "app",
+    name: "TruthLens",
+    category: "AI fake news detection",
+    image: "/truthlens.png",
+    summary:
+      "An AI-powered tool that analyzes news articles and social media content to detect misinformation and rate credibility with explainable results.",
+    detail:
+      "TruthLens runs news articles through a trained NLP classification pipeline that outputs a credibility score and highlights the specific phrases that drove the verdict — so users understand why content was flagged, not just that it was. The model combines scikit-learn feature extraction with a fine-tuned transformer layer for contextual understanding, trained on labeled datasets of real and fabricated news. Served via a FastAPI backend with a React frontend.",
+    tech: ["react", "fastapi", "python", "scikitlearn", "ml", "tailwindcss", "restapi"],
+    coverTech: "python",
+    links: { demo: "/", github: "/" },
   },
 ];
 
@@ -251,7 +264,7 @@ export const stack: StackGroup[] = [
     domain: "ai",
     blurb:
       "Retrieval over long transcripts, and agents for the decisions a static rule cannot make.",
-    items: ["llms", "rag", "openai", "langchain", "langgraph", "agents", "automations"],
+    items: ["llms", "rag", "ml", "dl", "genai", "langchain", "langgraph", "agents", "multiagent", "automations", "scikitlearn"],
   },
   {
     title: "Frontend",
@@ -264,22 +277,24 @@ export const stack: StackGroup[] = [
       "nextdotjs",
       "vuedotjs",
       "vuetify",
+      "pinia",
       "redux",
       "tailwindcss",
-      "sass",
+      "reactnative",
+      "flutter",
     ],
   },
   {
     title: "Backend",
     domain: "backend",
     blurb: "REST APIs and the queue work that keeps long jobs from blocking a request.",
-    items: ["nodedotjs", "express", "fastify", "fastapi", "restapi", "go"],
+    items: ["nodedotjs", "express", "fastify", "fastapi", "python", "restapi", "ast"],
   },
   {
     title: "Data and infrastructure",
     domain: "data",
     blurb: "Relational where it matters, document where it does not, containers either way.",
-    items: ["postgresql", "mongodb", "redis", "bullmq", "docker", "devops"],
+    items: ["postgresql", "mysql", "mongodb", "redis", "bullmq", "docker", "git", "github", "githubactions", "aws", "linux", "firebase"],
   },
 ];
 
@@ -293,8 +308,9 @@ export const facts: Fact[] = [
   },
   {
     label: "Projects shipped",
-    value: shippedCount,
-    note: "Migration, RAG, commerce, delivery, infra",
+    value: 13,
+    suffix: "+",
+    note: "E-commerce, AI, delivery, healthcare, automotive",
   },
   {
     label: "Teams shipped with",
@@ -318,6 +334,8 @@ export const contact = {
 export type Role = {
   company: string;
   role: string;
+  logo?: string;
+  logoBg?: string;
   /**
    * Format: "Jun to Aug 2026", or "Jun 2025 to Aug 2026" when the range crosses
    * a year. Kept short because the rail gives this column 9rem, and a longer
@@ -336,34 +354,42 @@ export type Role = {
 
 export const experience: Role[] = [
   {
-    company: "Securiti AI (A Veeam Software Company)",
+    company: "Veeam Software Company",
     role: "Software Engineering Intern",
+    logo: "/veeam.png",
     period: "Jun to Aug 2026",
     location: "Islamabad",
     current: true,
     achievements: [
-      "Worked on a migration platform that takes a codebase from an older framework version to a current one.",
-      "The work was the transformation itself: reading the old shape, producing the new one, and reporting what changed.",
+      "Developed a Migration Assistant product to automate and simplify code migrations across different versions and environments.",
+      "Integrated static code analysis, dependency intelligence, automated code transformation, and AI-driven workflows to identify migration risks.",
+      "Worked with Generative AI, Agentic AI, and Multi-Agent systems to automate complex migration tasks.",
+      "Implemented human-in-the-loop workflows to improve the reliability, efficiency, and scalability of migration processes.",
     ],
   },
   {
     company: "ZySoftec",
     role: "Junior Full Stack Developer",
+    logo: "/zysoftec.png",
     period: "Mar to Jun 2026",
     location: "Islamabad",
     achievements: [
-      "Debugged and fixed defects across an existing codebase rather than starting anything from scratch.",
-      "Added features to a product already in use, working inside conventions that were set before I arrived.",
+      "Debugged and resolved defects across an existing production codebase.",
+      "Developed and integrated new features into an established product while following existing architecture and coding conventions.",
+      "Worked within an existing development workflow, maintaining and improving the product without disrupting established functionality.",
     ],
   },
   {
     company: "Texinity Technologies (SMC-PVT) LTD.",
     role: "Full Stack Intern",
+    logo: "/texinity.png",
+    logoBg: "bg-white border border-line-2",
     period: "Jul to Sep 2025",
     location: "Islamabad",
     achievements: [
-      "Built full-stack features on MERN projects: React on the front, Express and MongoDB behind it.",
-      "Also worked in Next.js with a Node service, so the internship covered two stacks rather than one.",
+      "Built full-stack features using the MERN stack, working across React, Express.js, Node.js, and MongoDB.",
+      "Developed applications with Next.js and Node.js, gaining experience across multiple full-stack architectures.",
+      "Worked on frontend, backend, API integration, database management, and overall application development.",
     ],
   },
 ];

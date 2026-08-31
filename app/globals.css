@@ -1,22 +1,9 @@
 @import "tailwindcss";
 
 /* ==================================================================
-   DESIGN TOKENS
-   Single locked theme: cool near-black instrumentation surface.
-   One accent (azure). Semantic status colors are data, not
-   decoration, and appear only where they describe real state.
-   One radius scale: 4px everywhere. No pills, no soft cards.
+   DESIGN TOKENS — DARK (default)
    ================================================================== */
 :root {
-  /*
-    Three surfaces, one step apart. Lifted off near-black: the previous set
-    bottomed out at #08090b, which read as a switched-off panel rather than a
-    dark one and left the hairlines with nothing to sit against. Still
-    unmistakably a dark instrumentation surface, just no longer at the floor.
-
-    Raising these lowers every ratio measured below, which is why the text
-    tokens moved with them rather than being left where they were.
-  */
   --bg: #111318;
   --bg-panel: #171a20;
   --bg-raise: #1e222a;
@@ -25,81 +12,64 @@
   --line-2: rgba(255, 255, 255, 0.14);
   --line-3: rgba(255, 255, 255, 0.22);
 
-  /*
-    The rule grid has its own alpha rather than borrowing --line, because the
-    two want opposite things from a lighter surface. Panel edges need to hold
-    their reading, so --line went up. The grid is a texture behind a headline
-    and needs to stay under it, and a lifted background makes the same alpha
-    land about 40% more visible: the perceived step against --bg grew from
-    roughly 3.5 to 4.3 in L*. This pulls it back to about 3.7.
-  */
   --grid-line: rgba(255, 255, 255, 0.06);
-  /* The second, finer grid. Roughly a third of the coarse alpha: at 18px
-     the lines are four times as dense, so matching alphas would read as
-     a wash rather than as a plane behind a plane. */
   --grid-line-fine: rgba(255, 255, 255, 0.022);
 
   --fg: #e9ecef;
   --fg-2: #a6adb6;
-  /*
-    Contrast-solved, not eyeballed. Every ratio here is computed against the
-    surfaces above, and each token sits just above its threshold rather than on
-    it, so a later half-step on a surface does not silently drop it below.
-
-    --muted carries small text (labels, notes, row numbers) so it has to clear
-    WCAG AA 4.5:1 against the lightest surface it ever sits on, which is
-    --bg-raise: 4.58:1 there, 5.00:1 on --bg-panel, 5.33:1 on --bg.
-
-    --faint is for non-text UI only, where the 1.4.11 threshold is 3:1: 3.14:1
-    on --bg-raise, 3.44:1 on --bg-panel, 3.66:1 on --bg. Form field borders use
-    it, and a control boundary is exactly the case 1.4.11 covers. Never put
-    text on --faint.
-  */
   --muted: #838a94;
   --faint: #696f77;
 
-  /*
-    Azure. Contrast-checked both ways: 5.81:1 as text on --bg, 5.44:1 on
-    --bg-panel, 4.86:1 against its own --accent-dim fill in the status chip, and
-    6.26:1 for --accent-fg sitting on top of it as a button fill. Change these
-    four values and --accent-hover to re-theme the whole site; nothing hardcodes
-    the hue.
-  */
   --accent: #4c8dff;
   --accent-hover: #6ba1ff;
   --accent-dim: rgba(76, 141, 255, 0.14);
   --accent-line: rgba(76, 141, 255, 0.34);
   --accent-fg: #07080a;
 
-  /*
-    Domain hues. One per area of the stack, and the rule is that a technology
-    always wears its own area's colour, in every place it appears. That makes
-    these information rather than decoration: two chips the same colour are two
-    tools doing the same kind of job.
-
-    Frontend is an alias of --accent rather than its own value, so re-theming the
-    accent carries it along and the page never ends up with two blues.
-
-    All four are contrast-solved as text against every surface they sit on.
-    Measured bg / panel / raise:
-      frontend  5.81 / 5.44 / 4.98
-      backend   7.97 / 7.47 / 6.83
-      data      7.63 / 7.16 / 6.55
-      ai        5.82 / 5.46 / 4.99
-    Azure stays the page's primary and the only interactive colour. These never
-    appear on a button, a link, or a focus ring.
-  */
   --domain-frontend: var(--accent);
   --domain-backend: #3fbf85;
   --domain-data: #d99a35;
   --domain-ai: #9d7cf0;
 
-  /* semantic state only */
   --ok: #57b98a;
-  /* Lifted with the surfaces to hold 4.69:1 as error text on --bg-panel. */
   --down: #c66a65;
 
   --r: 4px;
+}
+
+/* ==================================================================
+   DESIGN TOKENS — LIGHT
+   ================================================================== */
+[data-theme="light"] {
+  --bg: #f5f6f8;
+  --bg-panel: #ffffff;
+  --bg-raise: #eceef2;
+
+  --line: rgba(0, 0, 0, 0.08);
+  --line-2: rgba(0, 0, 0, 0.13);
+  --line-3: rgba(0, 0, 0, 0.20);
+
+  --grid-line: rgba(0, 0, 0, 0.06);
+  --grid-line-fine: rgba(0, 0, 0, 0.025);
+
+  --fg: #0d0f14;
+  --fg-2: #404550;
+  --muted: #6b7280;
+  --faint: #9ca3af;
+
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --accent-dim: rgba(37, 99, 235, 0.10);
+  --accent-line: rgba(37, 99, 235, 0.28);
+  --accent-fg: #ffffff;
+
+  --domain-frontend: var(--accent);
+  --domain-backend: #059669;
+  --domain-data: #b45309;
+  --domain-ai: #7c3aed;
+
+  --ok: #16a34a;
+  --down: #dc2626;
 }
 
 @theme inline {
@@ -143,6 +113,10 @@ html {
   scroll-padding-top: 5.5rem;
   -webkit-text-size-adjust: 100%;
   color-scheme: dark;
+}
+
+[data-theme="light"] {
+  color-scheme: light;
 }
 
 /* Lenis drives scrolling; native smooth would fight it. */

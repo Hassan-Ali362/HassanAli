@@ -7,6 +7,13 @@ import {
   PlugsConnected,
   Queue,
   Robot,
+  Cloud,
+  Tree,
+  ArrowsLeftRight,
+  ChartLineUp,
+  Cpu,
+  Sparkle,
+  Graph,
 } from "@phosphor-icons/react/dist/ssr";
 import {
   SiJavascript,
@@ -17,12 +24,10 @@ import {
   SiVuetify,
   SiRedux,
   SiTailwindcss,
-  SiSass,
   SiNodedotjs,
   SiExpress,
   SiFastify,
   SiFastapi,
-  SiGo,
   SiPostgresql,
   SiMongodb,
   SiRedis,
@@ -30,6 +35,16 @@ import {
   SiLangchain,
   SiLanggraph,
   SiGooglemaps,
+  SiPython,
+  SiGit,
+  SiGithub,
+  SiGithubactions,
+  SiLinux,
+  SiPinia,
+  SiMysql,
+  SiScikitlearn,
+  SiFlutter,
+  SiFirebase,
 } from "react-icons/si";
 
 type GlyphComponent = React.ComponentType<{ className?: string; size?: number }>;
@@ -77,25 +92,31 @@ export const brandGlyph: Record<string, GlyphComponent> = {
   vuetify: SiVuetify,
   redux: SiRedux,
   tailwindcss: SiTailwindcss,
-  sass: SiSass,
+  pinia: SiPinia,
   nodedotjs: SiNodedotjs,
   express: SiExpress,
   fastify: SiFastify,
   fastapi: SiFastapi,
-  go: SiGo,
+  python: SiPython,
   postgresql: SiPostgresql,
   mongodb: SiMongodb,
+  mysql: SiMysql,
   redis: SiRedis,
   docker: SiDocker,
+  git: SiGit,
+  github: SiGithub,
+  githubactions: SiGithubactions,
+  linux: SiLinux,
   langchain: SiLangchain,
   langgraph: SiLanggraph,
   googlemaps: SiGooglemaps,
+  scikitlearn: SiScikitlearn,
+  flutter: SiFlutter,
+  firebase: SiFirebase,
+  reactnative: SiReact, // uses React icon
   openai: OpenAiLogo as unknown as GlyphComponent,
 
-  /* Concepts, not brands. None of these has a logo to use, so each takes a
-     glyph that says what it is: a brain for the models, a document under a lens
-     for retrieval, a robot for agents, a flow for automations, a connector for
-     REST, a queue for BullMQ, and the loop for DevOps. */
+  /* Concepts — no brand logo available */
   llms: concept(Brain, "Brain"),
   rag: concept(FileMagnifyingGlass, "FileMagnifyingGlass"),
   agents: concept(Robot, "Robot"),
@@ -103,6 +124,12 @@ export const brandGlyph: Record<string, GlyphComponent> = {
   restapi: concept(PlugsConnected, "PlugsConnected"),
   bullmq: concept(Queue, "Queue"),
   devops: concept(InfinityGlyph, "Infinity"),
+  aws: concept(Cloud, "Cloud"),
+  ast: concept(Tree, "Tree"),
+  ml: concept(ChartLineUp, "ChartLineUp"),
+  dl: concept(Cpu, "Cpu"),
+  genai: concept(Sparkle, "Sparkle"),
+  multiagent: concept(Graph, "Graph"),
 };
 
 /* -------------------------------------------------------------------------- */
@@ -120,9 +147,6 @@ export const brandGlyph: Record<string, GlyphComponent> = {
 export type Domain = "frontend" | "backend" | "data" | "ai";
 
 export const brandDomain: Record<string, Domain> = {
-  /* The languages sit with the frontend, which is where they are written most
-     here. A language genuinely spans both, so this is a choice rather than a
-     fact: it keeps one hue per tile instead of splitting JavaScript across two. */
   javascript: "frontend",
   typescript: "frontend",
   react: "frontend",
@@ -131,22 +155,29 @@ export const brandDomain: Record<string, Domain> = {
   vuetify: "frontend",
   redux: "frontend",
   tailwindcss: "frontend",
-  sass: "frontend",
+  pinia: "frontend",
 
   nodedotjs: "backend",
   express: "backend",
   fastify: "backend",
   fastapi: "backend",
   restapi: "backend",
-  go: "backend",
+  python: "backend",
   googlemaps: "backend",
+  ast: "backend",
 
   postgresql: "data",
   mongodb: "data",
+  mysql: "data",
   redis: "data",
   bullmq: "data",
   docker: "data",
   devops: "data",
+  git: "data",
+  github: "data",
+  githubactions: "data",
+  aws: "data",
+  linux: "data",
 
   llms: "ai",
   langchain: "ai",
@@ -155,6 +186,14 @@ export const brandDomain: Record<string, Domain> = {
   rag: "ai",
   agents: "ai",
   automations: "ai",
+  scikitlearn: "ai",
+  ml: "ai",
+  dl: "ai",
+  genai: "ai",
+  multiagent: "ai",
+  flutter: "frontend",
+  reactnative: "frontend",
+  firebase: "data",
 };
 
 /**
@@ -176,7 +215,6 @@ export const domainWash: Record<Domain, string> = {
   ai: "from-domain-ai/[0.10]",
 };
 
-/** Human-readable labels. Every slug used in data must have one. */
 export const brandLabel: Record<string, string> = {
   javascript: "JavaScript",
   typescript: "TypeScript",
@@ -184,29 +222,42 @@ export const brandLabel: Record<string, string> = {
   nextdotjs: "Next.js",
   vuedotjs: "Vue",
   vuetify: "Vuetify",
-  /* "Redux Toolkit" is the accurate name but overruns a tile at this size and
-     truncates, and the mark beside it already says Redux. */
   redux: "Redux",
   tailwindcss: "Tailwind",
-  sass: "SCSS",
+  pinia: "Pinia",
   nodedotjs: "Node.js",
   express: "Express",
   fastify: "Fastify",
   fastapi: "FastAPI",
   restapi: "REST APIs",
-  go: "Go",
+  python: "Python",
   postgresql: "Postgres",
   mongodb: "MongoDB",
+  mysql: "SQL",
   redis: "Redis",
   bullmq: "BullMQ",
   docker: "Docker",
-  devops: "DevOps",
+  devops: "CI/CD",
+  git: "Git",
+  github: "GitHub",
+  githubactions: "GitHub Actions",
+  aws: "AWS",
+  linux: "Linux",
   llms: "LLMs",
   langchain: "LangChain",
   langgraph: "LangGraph",
   openai: "OpenAI",
   googlemaps: "Maps",
   rag: "RAG",
-  agents: "AI agents",
+  agents: "AI Agents",
   automations: "Automations",
+  ast: "AST / Static Analysis",
+  scikitlearn: "Scikit-Learn",
+  ml: "Machine Learning",
+  dl: "Deep Learning",
+  genai: "Generative AI",
+  multiagent: "Multi-Agent Systems",
+  flutter: "Flutter",
+  reactnative: "React Native",
+  firebase: "Firebase",
 };

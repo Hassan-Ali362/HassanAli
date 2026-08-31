@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Archivo, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import { SmoothScroll } from "@/components/providers/smooth-scroll";
+import { ThemeProvider } from "@/components/providers/theme";
 import { Ambient } from "@/components/ui/ambient";
 import { Nav } from "@/components/layout/nav";
 import { Footer } from "@/components/layout/footer";
@@ -75,8 +76,9 @@ export default function RootLayout({
   return (
     /* Theme is locked dark. This design reads as instrumentation; a light
        variant would be a different site, not a variant of this one. */
-    <html lang="en" className={`${archivo.variable} ${plexMono.variable} antialiased`}>
-      <body className="min-h-dvh bg-bg text-fg">
+    <html lang="en" className={`${archivo.variable} ${plexMono.variable} antialiased`} suppressHydrationWarning>
+      <body className="min-h-dvh bg-bg text-fg" suppressHydrationWarning>
+        <ThemeProvider>
         <SmoothScroll />
         <Ambient />
         <a
@@ -88,6 +90,7 @@ export default function RootLayout({
         <Nav />
         <main>{children}</main>
         <Footer />
+        </ThemeProvider>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}

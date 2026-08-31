@@ -1,11 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { List, X } from "@phosphor-icons/react";
+import { List, X, Sun, Moon } from "@phosphor-icons/react";
 import { navLinks, profile } from "@/lib/data";
+import { useTheme } from "@/components/providers/theme";
 
 export function Nav() {
   const [open, setOpen] = useState(false);
+  const { theme, toggle } = useTheme();
 
   return (
     <header className="sticky top-0 z-50 border-b border-line bg-bg/85 backdrop-blur-md">
@@ -33,6 +35,15 @@ export function Nav() {
         </div>
 
         <div className="flex items-center gap-2">
+          {/* Theme toggle */}
+          <button
+            type="button"
+            onClick={toggle}
+            aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+            className="grid size-11 place-items-center rounded-sq border border-line-2 text-fg-2 transition-colors hover:text-fg md:size-9"
+          >
+            {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
+          </button>
           <a
             href="#contact"
             className="hidden rounded-sq bg-accent px-4 py-2 text-[13px] font-medium leading-none text-accent-fg transition-colors hover:bg-accent-hover sm:inline-flex"
@@ -44,8 +55,6 @@ export function Nav() {
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
             aria-label={open ? "Close menu" : "Open menu"}
-            /* 44x44 minimum touch target. size-9 (36px) is under the threshold
-               and measurably harder to hit accurately. */
             className="grid size-11 place-items-center rounded-sq border border-line-2 text-fg-2 md:hidden"
           >
             {open ? <X size={16} /> : <List size={16} />}

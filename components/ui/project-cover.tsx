@@ -41,34 +41,16 @@ export function ProjectCover({
 
   if (image) {
     return (
-      /* No aria-hidden on this branch: the image carries a real alt describing
-         the project, and hiding the subtree would throw that away. */
-      <div className={`relative ${aspect} overflow-hidden rounded-sq border border-line bg-panel`}>
-        <Image
-          src={image}
-          alt={alt}
-          fill
-          sizes="(min-width: 1024px) 90vw, 100vw"
-          className="object-cover"
-        />
-
-        {/* Two passes over the photograph. The wash ties it to this project's
-            domain colour so a stock image does not fight the palette, and the
-            scrim darkens the lower edge so the index stays legible whatever the
-            photograph happens to be. Both are light enough that a real
-            screenshot dropped in here is still readable. */}
-        <div
-          className={`absolute inset-0 bg-gradient-to-br via-transparent to-transparent ${wash}`}
-          aria-hidden
-        />
-        <div
-          className="absolute inset-0 bg-gradient-to-t from-bg/85 via-bg/25 to-transparent"
-          aria-hidden
-        />
-
-        <span className="num absolute bottom-5 left-6 text-[3.5rem] font-medium leading-none tracking-tight text-fg/70 md:text-[4.5rem]">
-          {index}
-        </span>
+      <div className={`relative overflow-hidden rounded-sq border border-line bg-panel ${aspect}`}>
+        <div className="absolute inset-0">
+          <Image
+            src={image}
+            alt={alt}
+            fill
+            sizes="(min-width: 1024px) 90vw, 100vw"
+            className="object-contain"
+          />
+        </div>
       </div>
     );
   }
