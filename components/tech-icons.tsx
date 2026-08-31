@@ -45,6 +45,7 @@ import {
   SiScikitlearn,
   SiFlutter,
   SiFirebase,
+  SiYolo,
 } from "react-icons/si";
 
 type GlyphComponent = React.ComponentType<{ className?: string; size?: number }>;
@@ -113,7 +114,8 @@ export const brandGlyph: Record<string, GlyphComponent> = {
   scikitlearn: SiScikitlearn,
   flutter: SiFlutter,
   firebase: SiFirebase,
-  reactnative: SiReact, // uses React icon
+  reactnative: SiReact,
+  yolo: SiYolo,
   openai: OpenAiLogo as unknown as GlyphComponent,
 
   /* Concepts — no brand logo available */
@@ -194,6 +196,7 @@ export const brandDomain: Record<string, Domain> = {
   flutter: "frontend",
   reactnative: "frontend",
   firebase: "data",
+  yolo: "ai",
 };
 
 /**
@@ -260,4 +263,5 @@ export const brandLabel: Record<string, string> = {
   flutter: "Flutter",
   reactnative: "React Native",
   firebase: "Firebase",
+  yolo: "YOLO",
 };

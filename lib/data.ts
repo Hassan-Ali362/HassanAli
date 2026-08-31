@@ -228,6 +228,20 @@ export const projects: Project[] = [
     links: { demo: "/", github: "https://github.com/Hassan-Ali362/MigrateSense" },
   },
   {
+    slug: "intellidetect",
+    layout: "app",
+    name: "IntelliDetect",
+    category: "Object detection and classification system",
+    image: "/intellidetect.png",
+    summary:
+      "A real-time object detection and classification system that identifies and labels multiple objects in images and video streams with high accuracy.",
+    detail:
+      "IntelliDetect processes images and live video frames through a YOLOv8-powered detection pipeline to identify, localize, and classify multiple objects simultaneously with high speed and accuracy. Each detected object is highlighted with a bounding box and confidence score. The model is trained on custom-labeled datasets using YOLO's architecture, served through a FastAPI backend, with a React frontend for uploading images or streaming live input.",
+    tech: ["python", "fastapi", "react", "tailwindcss", "yolo", "ml", "dl"],
+    coverTech: "yolo",
+    links: { demo: "/", github: "/" },
+  },
+  {
     slug: "truthlens",
     layout: "app",
     name: "TruthLens",

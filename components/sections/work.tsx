@@ -143,7 +143,7 @@ export function Work() {
                     href={project.links.demo}
                     target="_blank"
                     rel="noreferrer"
-                    className="group inline-flex items-center gap-1.5 rounded-sq border !border-accent px-4 py-2 text-[13px] text-white transition-colors hover:bg-accent-dim"
+                    className="group inline-flex items-center gap-1.5 rounded-sq border !border-accent px-4 py-2 text-[13px] text-fg transition-colors hover:bg-accent-dim"
                   >
                     Walkthrough
                     <ArrowUpRight size={13} weight="bold" className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
